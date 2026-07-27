@@ -16,12 +16,11 @@ class MainPage {
     privacyLink: () => cy.contains('a', 'Data and Privacy'),
   };
 
-  // TC-03: Ask Assistant / AI Widget Test
+  // TC-03: Verify navigation to Contact Us page and form availability
   tc03 = {
     contactUsHeaderLink: () => cy.get('header a[href*="/contact-us"]').first()
   };
 
-  // MainPage.js
   handleCookies() {
     // Cypress will retry looking for the accept button for up to 10 seconds
     cy.get('#onetrust-accept-btn-handler', { timeout: 10000 })
