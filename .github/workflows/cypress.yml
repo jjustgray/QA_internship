@@ -31,4 +31,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Run tests with the staging config file
-          npx cypress run --config-file cypress.staging.config.js --record --parallel
+          npx cypress run --config-file cypress.staging.config.js --record
