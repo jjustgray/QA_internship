@@ -6,7 +6,7 @@ describe('Telnyx Portal', () => {
     cy.visit('/login');
   });
 
-  it.skip('TC-05: Log in via Magic Link from email', () => {
+  it('TC-06: Log in via Magic Link from email', () => {
     const testEmail = `user_${Date.now()}@${serverDomain}`;
 
     cy.get('input[name="email"]')
@@ -36,7 +36,7 @@ describe('Telnyx Portal', () => {
     });
   });
 
-  it('TC-06: Toggle theme between light and dark mode', () => {
+  it('TC-07: Toggle theme between light and dark mode', () => {
     cy.get('.MuiSwitch-root input[type="checkbox"]')
       .first()
       .as('themeSwitch');

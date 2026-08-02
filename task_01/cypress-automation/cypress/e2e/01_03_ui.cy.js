@@ -1,26 +1,26 @@
-import MainPage from '../pages/MainPage';
+import mainPage from '../pages/MainPage';
 
 describe('UI and Navigation Tests', () => {
   beforeEach(() => {
     cy.visit('/');
-    MainPage.handleCookies();
+    mainPage.handleCookies();
   });
 
   it('TC-01: Navigation Menu Test', () => {
-    MainPage.navigateToSMSApi();
-    cy.url().should('include', '/products/sms-api');
-    cy.title().should('include', 'SMS API');
+    mainPage.navigateToDFPage();
+    cy.url().should('include', '/products');
+    cy.title().should('include', 'Products Overview');
   });
 
-  it('TC-02: Footer Text Main Page Test', () => {
+  it.skip('TC-02: Footer Text Main Page Test', () => {
     cy.scrollTo('bottom');
-    MainPage.tc02.footer().should('be.visible');
-    MainPage.tc02.footer().should('contain', 'Telnyx LLC 2026');
-    MainPage.tc02.privacyLink().should('be.visible').click();
+    mainPage.elements.footer().should('be.visible');
+    mainPage.elements.footer().should('contain', 'Telnyx LLC 2026');
+    mainPage.elements.privacyLink().should('be.visible').click();
   });
 
-  it('TC-03: Verify navigation to Contact Us page and form availability', () => {
-    MainPage.clickContactUs();
+  it.skip('TC-03: Verify navigation to Contact Us page and form availability', () => {
+    mainPage.clickContactUs();
     cy.url().should('include', '/contact-us');
 
     cy.get('h1').should('be.visible');

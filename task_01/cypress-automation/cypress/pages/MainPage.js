@@ -1,40 +1,36 @@
 class MainPage {
-  // Common Elements / Actions
-  common = {
-    cookieBannerAccept: () => cy.get('#onetrust-accept-btn-handler'),
-  };
+  // Единое хранилище всех DOM-селекторов страницы
+  get elements() {
+    return {
+      // Cookie banner
+      cookieBannerAccept: () => cy.get('#onetrust-accept-btn-handler'),
 
-  // TC-01: Navigation Menu Test
-  tc01 = {
-    productsDropdown: () => cy.contains('span', 'Products'),
-    smsApiOption: () => cy.contains('div', 'SMS API'),
-  };
+      // Navigation / Header
+      productsDropdown: () => cy.contains('span', 'Products'),
+      viewAllPrimitivesLink: () => cy.contains('a', /view all primitives/i),
+      contactUsHeaderLink: () => cy.get('header a[href*="/contact-us"]').first(),
 
-  // TC-02: Footer Text Main Page Test
-  tc02 = {
-    footer: () => cy.get('footer'),
-    privacyLink: () => cy.contains('a', 'Data and Privacy'),
-  };
-
-  // TC-03: Verify navigation to Contact Us page and form availability
-  tc03 = {
-    contactUsHeaderLink: () => cy.get('header a[href*="/contact-us"]').first()
-  };
-
-  handleCookies() {
-    // Cypress will retry looking for the accept button for up to 10 seconds
-    cy.get('#onetrust-accept-btn-handler', { timeout: 10000 })
-        .should('be.visible')
-        .click();
+      // Footer
+      footer: () => cy.get('footer'),
+      privacyLink: () => cy.contains('a', 'Data and Privacy'),
+    };
   }
 
-  navigateToSMSApi() {
-    this.tc01.productsDropdown().click();
-    this.tc01.smsApiOption().click();
+  // Методы действий (Actions)
+  handleCookies() {
+    this.elements
+      .cookieBannerAccept()
+      .should('be.visible')
+      .click();
+  }
+
+  navigateToDFPage() {
+    this.elements.productsDropdown().click();
+    this.elements.viewAllPrimitivesLink().click({ force: true });
   }
 
   clickContactUs() {
-    this.tc03.contactUsHeaderLink().click({ force: true });
+    this.elements.contactUsHeaderLink().click({ force: true });
   }
 }
 
