@@ -1,6 +1,6 @@
 import VoiceAiPricingPage from '../pages/VoiceAiPricingPage';
 
-describe('Voice AI Agents Pricing Page Tests (POM)', () => {
+describe('Voice AI Agents Pricing Page Tests', () => {
   beforeEach(() => {
     cy.on('uncaught:exception', () => false);
 

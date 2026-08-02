@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Run the test suite (headless). Remove --record/--parallel if you don't want to record to Cypress cloud.
-          npx cypress run --record --parallel
+          npx cypress run --record
 
       - name: Run Cypress (staging config)
         env:
