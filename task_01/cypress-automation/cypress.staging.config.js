@@ -10,6 +10,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    specPattern: "cypress/e2e/staging/*.cy.{js,jsx,ts,tsx}",
     env: {
       MAILOSAUR_API_KEY: "u3xF3Am7TwH8Cl7dgUYcFeFmPYr8NPXc",
       MAILOSAUR_SERVER_ID: "4tctvri9",

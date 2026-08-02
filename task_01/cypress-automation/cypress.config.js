@@ -10,6 +10,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    specPattern: "cypress/e2e/*.cy.{js,jsx,ts,tsx}",
     blockHosts: [
       "*clarity.ms",
       "*intercom.io",
@@ -18,7 +19,7 @@ module.exports = defineConfig({
       "*clearbit.com",
       "*stackadapt.com",
       "*.linkedin.com",
-      "*prism-ingest.telnyx.tech" // якщо не тестуєте їхню аналітику
+      "*prism-ingest.telnyx.tech"
     ],
   },
 });
