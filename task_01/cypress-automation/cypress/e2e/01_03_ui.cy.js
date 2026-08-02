@@ -6,13 +6,13 @@ describe('UI and Navigation Tests', () => {
     MainPage.handleCookies();
   });
 
-  it.skip('TC-01: Navigation Menu Test', () => {
+  it('TC-01: Navigation Menu Test', () => {
     MainPage.navigateToSMSApi();
     cy.url().should('include', '/products/sms-api');
     cy.title().should('include', 'SMS API');
   });
 
-  it.skip('TC-02: Footer Text Main Page Test', () => {
+  it('TC-02: Footer Text Main Page Test', () => {
     cy.scrollTo('bottom');
     MainPage.tc02.footer().should('be.visible');
     MainPage.tc02.footer().should('contain', 'Telnyx LLC 2026');
