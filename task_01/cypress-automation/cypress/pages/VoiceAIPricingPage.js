@@ -15,6 +15,25 @@ class VoiceAiPricingPage {
     MainPage.handleCookies();
   }
 
+  verifyHeader() {
+    cy.get(this.elements.mainHeading)
+      .should('be.visible')
+      .and('contain.text', '$0.05 per minute. No fine print.');
+  }
+
+  checkAdditionalFeaturesExistence() {
+    cy.contains(/orchestration|STT|TTS/i).should('be.visible');
+  }
+
+  getStartBuildingBtn() {
+    return cy.contains('h2', 'Pick your commitment, not your features.').parent().parent().find('a').contains(/start building/i);
+  }
+
+  getContactSalesBtn() {
+    cy.visit('/pricing/voice-ai-agents');
+    return cy.contains('h2', 'Pick your commitment, not your features.').parent().parent().find('a').contains(/contact sales/i);
+  }
+
   scrollToCalculator() {
     cy.get(this.elements.calculatorSection).scrollIntoView().should('be.visible');  
   }

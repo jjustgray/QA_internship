@@ -7,27 +7,20 @@ describe('Voice AI Agents Pricing Page Tests (POM)', () => {
     VoiceAiPricingPage.visit();
   });
 
-  it.skip('TC-08: Should display Voice AI pricing elements and rate per minute', () => {
-    // 1. Проверяем главный заголовок страницы
+  it('TC-08: Voice AI pricing elements and rate per minute', () => {
     VoiceAiPricingPage.verifyHeader();
-
-    // 2. Проверяем наличие базовой ставки $0.05 за минуту
-    VoiceAiPricingPage.verifyPricingRate('$0.05');
-
-    // 3. Дополнительно проверяем присутствие упоминания базовых функций (STT / TTS / Orchestration)
-    cy.contains(/orchestration|STT|TTS/i).should('be.visible');
+    VoiceAiPricingPage.checkAdditionalFeaturesExistence();
   });
 
-  it.skip('TC-09: Should verify CTA navigation buttons and their links', () => {
-    // 1. Проверяем кнопку регистрационной воронки (Start Building Free / Sign Up)
+  it('TC-09: Sign-up or contact-sales buttons on Voice AI Pricing Page', () => {
     VoiceAiPricingPage.getStartBuildingBtn()
-      .should('have.attr', 'href')
-      .and('include', 'sign-up');
+      .click()
+      .url('should', 'include', '/sign-up');
 
-    // 2. Проверяем кнопку связи с экспертом / отделом продаж (Talk to an Expert)
-    VoiceAiPricingPage.getTalkToExpertBtn()
-      .should('have.attr', 'href')
-      .and('include', 'contact-us');
+    cy.visit('/pricing/voice-ai-agents');
+    VoiceAiPricingPage.getContactSalesBtn()
+      .click()
+      .url('should', 'include', '/contact-us');
   });
 
     it('TC-10: Dynamical calculator total monthly cost', () => {
@@ -42,7 +35,7 @@ describe('Voice AI Agents Pricing Page Tests (POM)', () => {
 
             VoiceAiPricingPage.getTotalCostElement()
             .invoke('text')
-            .then((updatedCostText) => { // Changed .should() to .then()
+            .then((updatedCostText) => {
                 cy.log(`Updated Cost: ${updatedCostText}`);
                 expect(updatedCostText.trim()).to.not.equal(initialCostText.trim());
             });

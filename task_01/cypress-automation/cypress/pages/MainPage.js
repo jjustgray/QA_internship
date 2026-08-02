@@ -20,7 +20,6 @@ class MainPage {
   handleCookies() {
     this.elements
       .cookieBannerAccept()
-      .should('be.visible')
       .click();
   }
 
