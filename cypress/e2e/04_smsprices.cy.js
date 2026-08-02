@@ -1,7 +1,7 @@
 import MessagingPage from '../pages/MessagingPage';
 import MainPage from '../pages/MainPage';
 
-describe('TC-05: Pay for SMS in different regions', () => {
+describe('Pay for SMS in different regions', () => {
   beforeEach(() => {
     Cypress.on('uncaught:exception', () => false);
     cy.visit('/pricing/messaging');
