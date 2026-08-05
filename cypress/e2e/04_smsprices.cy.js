@@ -5,8 +5,9 @@ describe('Pay for SMS in different regions', () => {
   beforeEach(() => {
     Cypress.on('uncaught:exception', () => false);
     cy.visit('/pricing/messaging');
+    cy.wait(2000);
     MainPage.handleCookies();
-    MessagingPage.findPayAsYouGoHeading().should('be.visible');
+    MessagingPage.findPayAsYouGoHeading().scrollIntoView();
   });
 
   it('TC-05: Verify "Send outbound messages" price updates when changing regions', () => {

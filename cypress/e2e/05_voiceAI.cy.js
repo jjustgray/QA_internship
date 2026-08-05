@@ -13,27 +13,25 @@ describe('Voice AI Agents Pricing Page Tests', () => {
   });
 
   it('TC-09: Sign-up or contact-sales buttons on Voice AI Pricing Page', () => {
-    VoiceAiPricingPage.getStartBuildingBtn()
-      .click()
-      .url('should', 'include', '/sign-up');
+    VoiceAiPricingPage.getStartBuildingBtn().click();
+    cy.url('should', 'include', '/sign-up');
 
     cy.visit('/pricing/voice-ai-agents');
-    VoiceAiPricingPage.getContactSalesBtn()
-      .click()
-      .url('should', 'include', '/contact-us');
+    VoiceAiPricingPage.getContactSalesBtn().click();
+    cy.url('should', 'include', '/contact-us');
   });
 
     it('TC-10: Dynamical calculator total monthly cost', () => {
         VoiceAiPricingPage.scrollToCalculator();
 
-        VoiceAiPricingPage.getTotalCostElement()
+        VoiceAiPricingPage.elements.totalCostElement()
         .invoke('text')
         .then((initialCostText) => {
             cy.log(`Initial Cost: ${initialCostText}`);
 
             VoiceAiPricingPage.setCalculatorMinutes(50000);
 
-            VoiceAiPricingPage.getTotalCostElement()
+            VoiceAiPricingPage.elements.totalCostElement()
             .invoke('text')
             .then((updatedCostText) => {
                 cy.log(`Updated Cost: ${updatedCostText}`);

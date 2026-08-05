@@ -7,10 +7,8 @@ class MainPage {
 
       // Navigation / Header
       productsDropdown: () => cy.contains('span', 'Products'),
-      viewAllPrimitivesLink: () => cy.contains('a', /view all primitives/i),
-      contactUsHeaderLink: () => cy.get('header a[href*="/contact-us"]').first(),
-
-      // Footer
+      viewAllPrimitivesLink: () => cy.contains('span', /view all primitives/i),
+      contactUsHeaderLink: () => cy.get('header').contains('a:visible', /contact us/i),
       footer: () => cy.get('footer'),
       privacyLink: () => cy.contains('a', 'Data and Privacy'),
     };
@@ -25,11 +23,11 @@ class MainPage {
 
   navigateToDFPage() {
     this.elements.productsDropdown().click();
-    this.elements.viewAllPrimitivesLink().click({ force: true });
+    this.elements.viewAllPrimitivesLink().should('be.visible').click();
   }
 
   clickContactUs() {
-    this.elements.contactUsHeaderLink().click({ force: true });
+    this.elements.contactUsHeaderLink().click();
   }
 }
 

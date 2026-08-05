@@ -8,15 +8,15 @@ class MessagingPage {
   }
 
   selectCountry = (countryName) => {
-      cy.get('#country-filter').click({force: true});
+      cy.get('button#country-filter').should('be.visible').click();
+      cy.get('button#country-filter').scrollIntoView();
       cy.contains('span', countryName).click();
   }
 
   getSmsRate() {
-    return cy
-      .contains('div, span, td', 'Send outbound messages')
-      .parent() // Scope to the parent container/row holding both the label and price
-      .get(':nth-child(1) > :nth-child(3) > .bg-transparent') // Find the price element within that row
+    return cy.contains('div', 'Alphanumeric Sender ID')
+      .parent()
+      .contains('div[class*="bg-transparent"]','per message part')
       .invoke('text')
       .then((text) => {
         const match = text.match(/\$\d+\.\d+/);

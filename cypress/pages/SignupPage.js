@@ -16,7 +16,7 @@ class SignupPage {
     }
 
     fillSignupForm(userData) {
-        this.getEmailInput().clear();
+        this.getEmailInput().clear().type(userData.email);
         this.getFirstnameInput().clear().type(userData.firstName);
         this.getLastnameInput().clear().type(userData.lastName);
         this.getPasswordInput().clear().type(userData.password);

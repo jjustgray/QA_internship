@@ -8,14 +8,14 @@ describe('User sign-up and login tests', () => {
     it('TC-04: Sign-Up Form Validation (Negative)', () => {
         SignupPage.makeBusinessTabActive();
         SignupPage.fillSignupForm({
-            email: '', 
+            email: 'missingemail@gg', 
             firstName: 'John', 
             lastName: 'Johnson', 
             password: 'randomchars'
         })
         SignupPage.getEmailError()
             .should('be.visible')
-            .should('contain', 'Please enter an email address');
+            .should('contain', 'Please enter a valid email address.');
         SignupPage.getPasswordError()
             .should('be.visible')
             .should('contain', 'Password must be at least 12 characters');
